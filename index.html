@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+<meta http-equiv="Content-Type" content="text/html; charset=greek_general_ci"/>
+ <title>Movies</title>
+ <!-- --> 
+<script src="http://code.jquery.com/jquery-latest.js">
+</script>
+<script>
+   $(document).ready(function(){
+      $('#submit').click(function(){
+          $.post("getMovies.php", $("#form1").serialize(),  function(response) {
+               $('#Result').html(response);
+               });
+               return false;
+          });
+     });
+</script> 
+ 
+ 
+<!-- --> 
+</head>
+<!-- BODY --->
+<body>
+
+<form name="form1" id="form1" method="post" >
+<table border="0">
+<tr><td>Pick Category:
+ <select name="category" >
+   <option value="drama">Drama</option>
+   <option value="comedy">Comedy</option>
+   <option value="horror">Horror</option>
+ </select> </td>
+ <td> Search: <input type="text" name='title' size='50' </td>
+ <td> <input type="submit" value="Submit Query" id="submit"/> </td>
+</tr>
+</table>
+ 
+<p>Result: <span id="Result"></span></p>
+</body>
+</html>
